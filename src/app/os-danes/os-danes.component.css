@@ -1,0 +1,10 @@
+p, label {
+    font-size: large;
+}
+.ime {
+    font-weight: 500;
+}
+form {
+    align-items: center;
+    justify-content: space-around;
+}

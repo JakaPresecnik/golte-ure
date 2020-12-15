@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "golte-ure"
+    }
+  },
+  "defaultProject": "golte-ure",
+  "cli": {
+    "analytics": false
+  }
 }
