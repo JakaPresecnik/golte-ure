@@ -1,4 +1,9 @@
 <div class="content">
     <h2 class="display-4">{{ currentDate }}</h2>
-    <os-danes></os-danes>
+    <os-danes
+      *ngFor="let oseba of osebje"
+      [oseba]="oseba"
+      [dan]="datum[oseba.emso]"
+      >
+    </os-danes>
 </div>

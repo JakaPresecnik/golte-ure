@@ -1,3 +1,4 @@
+import { OsebjeService } from './../osebje.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DomovComponent implements OnInit {
   currentDate: string;
-  constructor() { }
+  osebje: { ime: string; emso: string; }[];
+  datum;
+  
+  constructor(service: OsebjeService) { 
+    this.osebje = service.getOsebje();
+    this.datum = service.getDatumData();
+  }
 
   ngOnInit(): void {
     let today = new Date();

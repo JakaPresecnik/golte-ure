@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#"><img src="../../assets/img/golte_green_blue_2019.png" height="50" alt="logo" loading="lazy"></a>
+    <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-toggle="collapse" 
+      data-target="navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+      (click)="toggleCollapsed()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div [ngClass]="collapsed && 'collapse'" class="navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="#">Domov</a>
+        <a class="nav-link" href="#">Dodaj</a>
+        <a class="nav-link" href="#">Preglej</a>
+      </div>
+    </div>
+  </nav>
