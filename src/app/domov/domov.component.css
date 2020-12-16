@@ -1,0 +1,13 @@
+#calendar {
+    position: absolute;
+    opacity: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40px;
+}
+
+#calendar::-webkit-calendar-picker-indicator { 
+    cursor: pointer; 
+    width: 110px; 
+    margin: 0;}
+#calendar::-webkit-datetime-edit { display: none;}

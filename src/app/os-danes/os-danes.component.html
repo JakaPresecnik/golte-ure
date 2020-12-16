@@ -2,6 +2,7 @@
         <div class="form-group col-md-2">
             <p class="ime">{{ oseba.ime }}</p>
             <p>{{ oseba.emso }}</p>
+            <button class="btn btn-info">Preglej</button>
         </div>
         <div class="form-group col-md-2">
             <label for="od">Od: </label>
@@ -10,14 +11,12 @@
                 formControlName="od"
                 type="time" 
                 class="form-control" 
-                id="od" 
                 placeholder="Od">
             <input 
                 [attr.disabled]="dopustJe() || bolniskaJe()"
                 formControlName="odd"
                 type="time" 
                 class="form-control" 
-                id="odd" 
                 placeholder="Od">
         </div>
         <div class="form-group col-md-2">
@@ -27,14 +26,12 @@
                 formControlName="do"
                 type="datetime-local" 
                 class="form-control" 
-                id="do" 
                 placeholder="Do">
             <input 
                 [attr.disabled]="dopustJe() || bolniskaJe()"
                 formControlName="dod"
                 type="datetime-local" 
                 class="form-control" 
-                id="dod" 
                 placeholder="Do">
         </div>
         <div class="form-group col-md-2">
@@ -44,7 +41,6 @@
                 formControlName="visinska"
                 type="text" 
                 class="form-control" 
-                id="visinska" 
                 placeholder="Ure">
         </div>
         <div class="form-check col-md-1">
@@ -53,8 +49,7 @@
                 [attr.disabled]="bolniskaJe()"
                 formControlName="dopust" 
                 class="form-check-input" 
-                type="checkbox" 
-                id="dopust">
+                type="checkbox" >
             <label class="form-check-label" for="dopust">D</label>
         </div>
         <div class="form-check col-md-1">
@@ -63,8 +58,7 @@
                 [attr.disabled]="dopustJe()"
                 formControlName="bolniska" 
                 class="form-check-input" 
-                type="checkbox" 
-                id="bolniska">
+                type="checkbox" >
             <label class="form-check-label" for="bolniska">B</label>
         </div>
         <div class="form-check col-md-1">

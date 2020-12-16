@@ -13,12 +13,12 @@ export class DomovComponent implements OnInit {
   
   constructor(service: OsebjeService) { 
     this.osebje = service.getOsebje();
-    this.datum = service.getDatumData();
+    this.datum = service.getDatumData(this.currentDate);
   }
 
   ngOnInit(): void {
     let today = new Date();
-    this.currentDate = `${today.getDate().toString()}.${today.getMonth().toString()}.${today.getFullYear().toString()}`
+    this.currentDate = `${today.getFullYear().toString()}-${(today.getMonth()+1).toString()}-${today.getDate().toString()}`
   }
 
 }

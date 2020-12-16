@@ -7,18 +7,23 @@ import { AppComponent } from './app.component';
 import { DomovComponent } from './domov/domov.component';
 import { OsDanesComponent } from './os-danes/os-danes.component';
 import { NavComponent } from './nav/nav.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DodajComponent } from './dodaj/dodaj.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DomovComponent,
     OsDanesComponent,
-    NavComponent
+    NavComponent,
+    DodajComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [

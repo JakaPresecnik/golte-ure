@@ -11,7 +11,7 @@ export class OsebjeService {
     ]
   };
 
-  getDatumData() {
+  getDatumData(datum) {
     return {
       "23678493": { datum: "2020-12-15",  od: "01:32", do: "2020-12-15T03:32", visinska: 0, dopust: false, bolniska: false}
     }
