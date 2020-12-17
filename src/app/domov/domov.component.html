@@ -1,11 +1,12 @@
 <div class="content">
     <h2 class="display-4 pt-4">{{ currentDate | date:'d. MMM. yyyy' }}</h2>
     <button class="btn btn-warning mb-4">Drugi datum</button>
-    <input [(ngModel)]="currentDate" type="date" id="calendar">
+    <input (change)="spremeniDatum($event)" type="date" id="calendar">
     <os-danes
       *ngFor="let oseba of osebje"
       [oseba]="oseba"
-      [dan]="datum[oseba.emso]"
+      [emso]="datum[oseba.emso]"
+      [datum]="currentDate"
       >
     </os-danes>
 </div>

@@ -8,7 +8,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class OsDanesComponent implements OnInit {
   @Input() oseba;
-  @Input() dan;
+  @Input() emso;
+  @Input() datum;
   form: FormGroup;
   
   resetUr() {
@@ -37,13 +38,13 @@ export class OsDanesComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      od: new FormControl(this.dan ? this.dan.od : null),
-      do: new FormControl(this.dan ? this.dan.do : null),
-      odd: new FormControl(this.dan ? this.dan.odd : null),
-      dod: new FormControl(this.dan ? this.dan.dod : null),
-      visinska: new FormControl(this.dan ? this.dan.visinska : 0),
-      dopust: new FormControl(this.dan ? this.dan.dopust : false),
-      bolniska: new FormControl(this.dan ? this.dan.bolniska : false) 
+      od: new FormControl(this.emso ? this.emso.od : null),
+      do: new FormControl(this.emso ? this.emso.do : null),
+      odd: new FormControl(this.emso ? this.emso.odd : null),
+      dod: new FormControl(this.emso ? this.emso.dod : null),
+      visinska: new FormControl(this.emso ? this.emso.visinska : 0),
+      dopust: new FormControl(this.emso ? this.emso.dopust : false),
+      bolniska: new FormControl(this.emso ? this.emso.bolniska : false) 
     })
   }
 

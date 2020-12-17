@@ -1,4 +1,4 @@
-import { OsebjeService } from './osebje.service';
+import { DomovService } from './domov.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,6 +10,8 @@ import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DodajComponent } from './dodaj/dodaj.component';
 import { FooterComponent } from './footer/footer.component';
+import { OsebaComponent } from './oseba/oseba.component';
+import { OsebaService } from './oseba.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
     OsDanesComponent,
     NavComponent,
     DodajComponent,
-    FooterComponent
+    FooterComponent,
+    OsebaComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule
   ],
   providers: [
-    OsebjeService
+    OsebaService,
+    DomovService
   ],
   bootstrap: [AppComponent]
 })

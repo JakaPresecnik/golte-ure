@@ -1,0 +1,29 @@
+<div class="content row pr-3 pl-3 pt-3">
+    <p class="col-md-5 text-uppercase h4">{{ mData.m }} {{ leto }}</p>
+    <p class="col-md-5 h4">{{ data.ime }}</p>
+</div>
+<p>{{ mData.days }}</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Dan</th>
+            <th>Prihod</th>
+            <th>Odhod</th>
+            <th>Prihod</th>
+            <th>Odhod</th>
+            <th>Skupaj</th>
+            <th>Višina</th>
+            <th>Nočna</th>
+            <th>Nedelja</th>
+            <th>Praznik</th>
+            <th>Dopust</th>
+            <th>Bolniška</th>
+            <th>Prevoz</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let day of days(); let i = index'>
+            <th>{{ i + 1 }}</th>
+        </tr>
+    </tbody>
+</table>

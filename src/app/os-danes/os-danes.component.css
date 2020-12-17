@@ -3,7 +3,18 @@ p, label {
 }
 .ime {
     font-weight: 500;
+    color: black;
+    margin: 0;
 }
+
+.badge {
+    background-color: #eff9d8;
+}
+
+.badge:hover {
+    background-color: #8DBF1D;
+}
+
 form {
     align-items: center;
     justify-content: space-around;

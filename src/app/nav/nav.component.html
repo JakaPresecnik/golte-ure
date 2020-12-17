@@ -13,9 +13,10 @@
     </button>
     <div [ngClass]="collapsed && 'collapse'" class="navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" routerLink="/">Domov</a>
-        <a class="nav-link" routerLink="/dodaj">Dodaj</a>
-        <a class="nav-link" href="#">Preglej</a>
+        <a class="nav-link" [routerLinkActiveOptions]="{exact:
+          true}" routerLinkActive="active" routerLink="/">Domov</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/dodaj">Dodaj</a>
+        <a class="nav-link" routerLinkActive="active" href="#">Preglej</a>
       </div>
     </div>
   </nav>

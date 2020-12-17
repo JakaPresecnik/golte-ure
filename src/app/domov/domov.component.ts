@@ -1,4 +1,4 @@
-import { OsebjeService } from './../osebje.service';
+import { DomovService } from '../domov.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,18 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./domov.component.css']
 })
 export class DomovComponent implements OnInit {
-  currentDate: string;
+  currentDate;
   osebje: { ime: string; emso: string; }[];
   datum;
   
-  constructor(service: OsebjeService) { 
+  spremeniDatum(e) {
+    e.preventDefault();
+    this.currentDate = new Date(e.target.value)
+  }
+
+  constructor(service: DomovService) { 
     this.osebje = service.getOsebje();
     this.datum = service.getDatumData(this.currentDate);
   }
 
   ngOnInit(): void {
-    let today = new Date();
-    this.currentDate = `${today.getFullYear().toString()}-${(today.getMonth()+1).toString()}-${today.getDate().toString()}`
+    this.currentDate = new Date();
   }
-
 }

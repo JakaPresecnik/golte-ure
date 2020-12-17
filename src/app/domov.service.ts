@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class OsebjeService {
+export class DomovService {
   getOsebje() {
     return [
       {ime: 'Jaka Presečnik', emso: '23678493'},
@@ -16,5 +16,6 @@ export class OsebjeService {
       "23678493": { datum: "2020-12-15",  od: "01:32", do: "2020-12-15T03:32", visinska: 0, dopust: false, bolniska: false}
     }
   }
+  
   constructor() { }
 }

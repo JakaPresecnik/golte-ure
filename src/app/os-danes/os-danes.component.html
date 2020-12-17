@@ -1,9 +1,10 @@
     <form [formGroup]="form" class="form-row border">
-        <div class="form-group col-md-2">
-            <p class="ime">{{ oseba.ime }}</p>
-            <p>{{ oseba.emso }}</p>
-            <button class="btn btn-info">Preglej</button>
-        </div>
+            <div class="form-group col-md-2">
+                <p class="ime">{{ oseba.ime }}</p>
+                <a [routerLink]="['/', oseba.emso, datum.getFullYear(), datum.getMonth()+1]" class="ime"><span class="badge">Preglej</span></a>
+                <p class="mb-0">{{ oseba.emso }}</p>
+            </div>
+        
         <div class="form-group col-md-2">
             <label for="od">Od: </label>
             <input
@@ -39,7 +40,7 @@
             <input
                 [attr.disabled]="dopustJe() || bolniskaJe()"
                 formControlName="visinska"
-                type="text" 
+                type="text"
                 class="form-control" 
                 placeholder="Ure">
         </div>
