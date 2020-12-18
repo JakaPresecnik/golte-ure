@@ -1,0 +1,9 @@
+<th>{{ i + 1 }}</th>
+<td>{{ odTime ? odTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : 'X' }}</td>
+<td>{{ doTime ? doTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : 'X' }}</td>
+<td>{{ oddTime ? oddTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : '' }}</td>
+<td>{{ dodTime ? dodTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : '' }}</td>
+<td>{{ odTime && doTime ? 
+    getSkupaj(odTime, doTime, oddTime, dodTime)
+    : '' }}</td>
+<td>{{ data.visinska }}</td>

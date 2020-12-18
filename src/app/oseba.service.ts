@@ -19,8 +19,8 @@ export class OsebaService {
     return {
       ime: "Jaka Presečnik",
       data: [
-        {datum: "2020-12-15", od: "01:32", do: "2020-12-15T03:32", visinska: 0, dopust: false, bolniska: false },
-        {datum: "2020-12-16", od: "01:32", do: "2020-12-16T03:32", visinska: 0, dopust: false, bolniska: false },
+        {od: "2020-12-15T12:30", do: "2020-12-15T14:00", visinska: 0, dopust: false, bolniska: false },
+        {od: "2020-12-16T01:30", do: "2020-12-16T03:30", odd: "2020-12-16T07:30", dod: "2020-12-16T18:00", visinska: 0, dopust: false, bolniska: false },
       ]
     }
   }

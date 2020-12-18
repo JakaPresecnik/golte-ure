@@ -1,5 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@media print{
+    @page {
+    size: landscape
+    }
+    body {
+        font-size: 12px;
+    }
+    tr {
+        line-height: 12px;
+    }
+}
 
 .content {
     text-align: center;

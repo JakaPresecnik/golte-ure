@@ -1,3 +1,4 @@
+import { OsebaVrsticaComponent } from './oseba-vrstica/oseba-vrstica.component';
 import { DomovService } from './domov.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,7 +22,8 @@ import { OsebaService } from './oseba.service';
     NavComponent,
     DodajComponent,
     FooterComponent,
-    OsebaComponent
+    OsebaComponent,
+    OsebaVrsticaComponent
   ],
   imports: [
     BrowserModule,
