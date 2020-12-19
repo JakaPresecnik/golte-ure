@@ -7,3 +7,5 @@
     getSkupaj(odTime, doTime, oddTime, dodTime)
     : '' }}</td>
 <td>{{ data.visinska }}</td>
+<td>{{ odTime && getNocne(odTime, doTime) }}</td>
+<td>{{ isSunday() ? 'true' : null }}</td>
