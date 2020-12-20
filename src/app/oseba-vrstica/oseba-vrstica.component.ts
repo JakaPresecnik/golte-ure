@@ -1,3 +1,4 @@
+import { OsebaService } from './../oseba.service';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -13,67 +14,27 @@ export class OsebaVrsticaComponent implements OnInit {
   oddTime: Date;
   doTime: Date;
   dodTime: Date;
-
-  getSkupaj(startDate: Date, endDate: Date, startDva?: Date, endDva?: Date) {
-    let dva = endDva && startDva;
-    let diff = endDate.getTime() - startDate.getTime();
-    let diffDva = dva ? (endDva.getTime() - startDva.getTime()) + diff : null;
-    let hours: number = Math.floor(diff / (60 * 60 * 1000));
-    let hoursDva: number = Math.floor(diffDva / (60 * 60 * 1000));
-    let minutes: number = Math.floor(diff / (60 * 1000)) - (hours * 60);
-    let minutesDva: number = Math.floor(diffDva / (60 * 1000)) - (hours * 60);
-
-    if (diffDva !== null) {
-      if(minutes === 0) {
-        return `${hoursDva}`;
-      }else {
-        return `${hoursDva}:${minutesDva}`;
-      }
-    }
-    if(minutes === 0) {
-      return `${hours}`;
+  skupaj: number[];
+  nocneEna: number = 0;
+  nocneDva: number = 0;
+  
+  getSkupaj() {
+    if (this.skupaj[1] === 0) {
+      return this.skupaj[0]
     }else {
-      return `${hours}:${minutes}`;
+      return this.skupaj[0] + ':' + this.skupaj[1]
     }
   }
-
-  getNocne(sD: Date, eD: Date) {
-    let ura: number = sD.getHours();
-    let minute: number = sD.getMinutes();
-    let uraDo: number = eD.getHours();
-
-    let dvaDni: boolean = !!(eD.getDate()-sD.getDate());
-    
-    let hNocna: number = 0;
-    let mNocna: number = 0;
-
-    for(; ura < 25; ura++) {
-      if (ura >= uraDo && !dvaDni) {
-        break;
-      }else if(ura < 22 && ura >= 6) {
-        continue;
-      }else{
-        if(minute !== 0 && uraDo > 6 && uraDo < 22) {
-          mNocna = +minute;
-          minute = 0;
-        }else {
-          hNocna++;
-        }
-      }
-
-      if(ura === 24) {
-        ura = 0;
-        dvaDni = !dvaDni;
-      }
-    }
-    return hNocna+ ':' + mNocna;
+  
+  getNocne() {
+    return (this.nocneEna + this.nocneDva) / 60;
   }
 
   isSunday() {
       return new Date(this.data.od).getDay() === 0;
   }
 
-  constructor() { }
+  constructor(private service: OsebaService) { }
 
   ngOnInit(): void {
     if(this.data.od) {
@@ -84,9 +45,13 @@ export class OsebaVrsticaComponent implements OnInit {
     }
     if(this.data.do) {
       this.doTime = new Date(this.data.do);
+      this.nocneEna = this.service.calcNocne(this.odTime, this.doTime);
+      this.skupaj = this.service.calcSkupaj(this.odTime, this.doTime, this.oddTime, this.dodTime)
     }
     if(this.data.dod) {
       this.dodTime = new Date(this.data.dod);
+      this.nocneDva = this.service.calcNocne(this.oddTime, this.dodTime);
+      this.skupaj = this.service.calcSkupaj(this.odTime, this.doTime, this.oddTime, this.dodTime)
     }
   }
 

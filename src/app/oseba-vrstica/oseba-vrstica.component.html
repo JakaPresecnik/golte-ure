@@ -3,9 +3,7 @@
 <td>{{ doTime ? doTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : 'X' }}</td>
 <td>{{ oddTime ? oddTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : '' }}</td>
 <td>{{ dodTime ? dodTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : '' }}</td>
-<td>{{ odTime && doTime ? 
-    getSkupaj(odTime, doTime, oddTime, dodTime)
-    : '' }}</td>
+<td>{{ skupaj ? getSkupaj() : null }}</td>
 <td>{{ data.visinska }}</td>
-<td>{{ odTime && getNocne(odTime, doTime) }}</td>
+<td>{{ odTime && getNocne() }}</td>
 <td>{{ isSunday() ? 'true' : null }}</td>
