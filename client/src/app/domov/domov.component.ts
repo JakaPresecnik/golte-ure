@@ -8,20 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DomovComponent implements OnInit {
   currentDate;
-  osebje: { ime: string; emso: string; }[];
-  datum;
+  osebje: any[] = [];
+  loaded: boolean = false;
+  datum: {};
   
   spremeniDatum(e) {
     e.preventDefault();
     this.currentDate = new Date(e.target.value)
   }
 
-  constructor(service: DomovService) { 
-    this.osebje = service.getOsebje();
-    this.datum = service.getDatumData(this.currentDate);
-  }
+  constructor(private service: DomovService) { }
 
   ngOnInit(): void {
+    this.service.getOsebje().subscribe((osebje: any[]) => {
+      this.osebje = osebje;
+    });
+    this.service.getDatumData(this.currentDate).subscribe((datum: {}) => {
+      console.log(datum)
+      this.datum = datum;
+      this.loaded = true;
+    });
     this.currentDate = new Date();
   }
 }
