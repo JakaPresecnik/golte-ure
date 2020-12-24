@@ -20,14 +20,13 @@ export class DomovComponent implements OnInit {
   constructor(private service: DomovService) { }
 
   ngOnInit(): void {
+    this.currentDate = new Date();
     this.service.getOsebje().subscribe((osebje: any[]) => {
       this.osebje = osebje;
     });
     this.service.getDatumData(this.currentDate).subscribe((datum: {}) => {
-      console.log(datum)
       this.datum = datum;
       this.loaded = true;
     });
-    this.currentDate = new Date();
   }
 }

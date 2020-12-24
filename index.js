@@ -20,14 +20,10 @@ app.get('/api/staff', (req, res) => {
 });
 
 app.get('/api/date', (req, res) => {
-    console.log('/date works')
+    console.log(req.query.datum);
+    
     res.json(dateData);
 })
-
-app.get('/api', (req, res) => {
-    console.log('/ works')
-    res.send('works');
-});
 
 app.listen(port, () => {
     console.log(`Listening on port: :${port}`);
