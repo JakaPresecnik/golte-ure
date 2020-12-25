@@ -1,5 +1,5 @@
 import { OsebaService } from './../oseba.service';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,22 +12,23 @@ export class OsebaComponent implements OnInit {
   leto: number;
   mesec: number;
   data;
-  mData: {m: string, days: number};
+  loaded: boolean = false;
   counter: number = 0;
 
   days() {
-    return new Array(this.mData.days);
+    return new Array(this.data.skupajDni);
   }
   getDay (i) {
-    let dan = new Date(this.leto, this.mesec-1, i).getDay();
-
-    if(dan === 0) {
+    let datum = new Date(this.leto, this.mesec-1, i);
+    let dan = datum.getDay();
+    if(this.data.prazniki.includes(datum.toDateString())) {
+      return 'table-warning'
+    }else if(dan === 0) {
       return 'table-success';
     }else if(dan === 6) {
       return 'table-info';
     }
   }
-
   passData(i) {
     if(this.data.data[this.counter] && new Date(this.data.data[this.counter].od).getDate() === i) {
       let j = this.counter;
@@ -38,11 +39,15 @@ export class OsebaComponent implements OnInit {
     }
   }
 
+  passPrazniki() {
+    return this.data.prazniki.map(praznik => {
+      return new Date(praznik).getDate();
+    });
+  }
+
   constructor( 
     private osebaService: OsebaService, 
-    private cdr: ChangeDetectorRef,
     private route: ActivatedRoute) {
-    
   }
 
   ngOnInit(): void {
@@ -53,11 +58,10 @@ export class OsebaComponent implements OnInit {
       this.mesec = +params.get('mesec');
     });
 
-    this.mData = this.osebaService.getMesecData(this.mesec, this.leto);
-    this.data = this.osebaService.getMesecOsebaData(this.leto, this.mesec, this.emso);
-  }
-
-  ngAfterViewChecked(){
-    this.cdr.detach();
+    this.osebaService.getMesecOsebaData(this.leto, this.mesec, this.emso)
+    .subscribe((data: {}) => {
+      this.data = data;
+      this.loaded = true;
+    })
   }
 }

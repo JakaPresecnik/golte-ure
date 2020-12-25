@@ -21,11 +21,10 @@ export class DomovComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentDate = new Date();
-    this.service.getOsebje().subscribe((osebje: any[]) => {
-      this.osebje = osebje;
-    });
-    this.service.getDatumData(this.currentDate).subscribe((datum: {}) => {
-      this.datum = datum;
+
+    this.service.getDatumData(this.currentDate).subscribe((data) => {
+      this.datum = data.datum;
+      this.osebje = data.osebje;
       this.loaded = true;
     });
   }
