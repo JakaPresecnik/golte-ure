@@ -4,10 +4,13 @@
 <td>{{ oddTime ? oddTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : '' }}</td>
 <td>{{ dodTime ? dodTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : '' }}</td>
 <td>{{ skupaj }}</td>
-<td>{{ data.visinska }}</td>
+<td>{{ visinska > 0 ? visinska : '' }}</td>
 <td>{{ doTime && getNocne() }}</td>
 <td>{{ nedeljske }}</td>
 <td>{{ praznicne }} </td>
 <td>{{ dopust ? 'DOP' : null }}</td>
 <td>{{ bolniska ? 'BOL' : null}}</td>
 <td>{{ odTime ? (oddTime ? 2 : 1) : null }}</td>
+<td>{{ skupaj >= 4 ? '1' : '' }}</td>
+<td>{{ skupaj >= 10 ? (skupaj - 8) * 1 + '€': '' }}</td>
+<td>{{ dezurni ? '1' : '' }}</td>

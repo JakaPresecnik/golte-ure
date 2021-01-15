@@ -45,6 +45,15 @@
                 placeholder="Ure">
         </div>
         <div class="form-check col-md-1">
+            <p>Dežurni:</p>
+            <input
+                [attr.disabled]="dopustJe()"
+                formControlName="dezurni" 
+                class="form-check-input" 
+                type="checkbox" >
+            <label class="form-check-label" for="dezurni">DEŽ</label>
+        </div>
+        <div class="form-check col-md-1">
             <p>Dopust:</p>
             <input
                 [attr.disabled]="bolniskaJe()"

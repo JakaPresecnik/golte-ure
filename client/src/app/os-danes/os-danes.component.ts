@@ -43,6 +43,7 @@ export class OsDanesComponent implements OnInit {
       odd: new FormControl(this.emso ? this.emso.odd : null),
       dod: new FormControl(this.emso ? this.emso.dod : null),
       visinska: new FormControl(this.emso ? this.emso.visinska : 0),
+      dezurni: new FormControl(this.emso ? this.emso.dezurni : false),
       dopust: new FormControl(this.emso ? this.emso.dopust : false),
       bolniska: new FormControl(this.emso ? this.emso.bolniska : false) 
     })

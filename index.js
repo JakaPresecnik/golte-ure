@@ -31,6 +31,7 @@ let imeDataMesec = [
       {od: "2020-12-05T22:30", do: "2020-12-06T03:00", visinska: 0, dopust: false, bolniska: false },
       {od: "2020-12-07T22:30", do: "", visinska: 0, dopust: true, bolniska: false },
       {od: "2020-12-08T22:30", do: "", visinska: 0, dopust: false, bolniska: true },
+      {od: "2020-12-09T12:30", do: "2020-12-09T18:00", visinska: 2, dopust: false, bolniska: false, dezurni: true },
       {od: "2020-12-15T12:30", do: "2020-12-15T14:00", visinska: 0, dopust: false, bolniska: false },
       {od: "2020-12-16T01:30", do: "2020-12-16T03:30", odd: "2020-12-16T07:30", dod: "2020-12-16T18:00", visinska: 0, dopust: false, bolniska: false },
       {od: "2020-12-20T01:30", do: "2020-12-20T03:30", odd: "2020-12-20T07:30", dod: "2020-12-20T18:00", visinska: 0, dopust: false, bolniska: false },

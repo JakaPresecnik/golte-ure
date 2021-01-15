@@ -22,9 +22,13 @@ export class OsebaVrsticaComponent implements OnInit {
   nocneDva: number = 0;
   dopust: boolean;
   bolniska: boolean;
+  visinska: number;
+  dezurni: boolean;
   
   getNocne() {
+    console.log(this.data)
     return (this.nocneEna + this.nocneDva) / 60;
+    
   }
 
   constructor(private service: OsebaService) { }
@@ -54,6 +58,9 @@ export class OsebaVrsticaComponent implements OnInit {
     }
     this.dopust = this.data.dopust;
     this.bolniska = this.data.bolniska;
+    this.visinska = this.data.visinska;
+    this.dezurni = this.data.dezurni;
+
   }
 
 }
