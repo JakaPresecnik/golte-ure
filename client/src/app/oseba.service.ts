@@ -20,6 +20,20 @@ export class OsebaService {
     }
   }
 
+  calcNedeljske(st: Date, en: Date) {
+    if(new Date(st).getDay() === 0 && new Date(en).getDay() === 0){
+      return this.calcSkupaj(st, en);
+    }else if(new Date(st).getDay() === 0) {
+      let nextDay = new Date(st);
+          nextDay = new Date(nextDay.setDate(nextDay.getDate() + 1));
+      let end = new Date(nextDay.getFullYear(), nextDay.getMonth(), nextDay.getDate());
+      return this.calcSkupaj(st, end);
+    }else if(new Date(en).getDay() === 0) {
+      let start = new Date(en.getFullYear(), en.getMonth(), en.getDate());
+      return this.calcSkupaj(start, en);
+    }
+  }
+
   calcNocne(sD: Date, eD: Date) {
     let ura: number = sD.getHours();
     let minute: number = sD.getMinutes();

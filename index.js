@@ -24,18 +24,19 @@ let dateData = {
 };
 let ime = 'Jaka Presečnik';
 let imeDataMesec = [
-      {od: "2020-12-01T22:30", do: "2020-12-01T23:30", visinska: 0, dopust: false, bolniska: false },
-      {od: "2020-12-02T22:30", do: "2020-12-03T07:30", visinska: 0, dopust: false, bolniska: false },
-      {od: "2020-12-03T21:30", do: "2020-12-04T05:00", visinska: 0, dopust: false, bolniska: false },
-      {od: "2020-12-04T12:30", do: "2020-12-04T18:00", odd: "2020-12-04T22:30", dod: "2020-12-05T03:00", visinska: 0, dopust: false, bolniska: false },
-      {od: "2020-12-05T22:30", do: "2020-12-06T03:00", visinska: 0, dopust: false, bolniska: false },
-      {od: "2020-12-07T22:30", do: "", visinska: 0, dopust: true, bolniska: false },
-      {od: "2020-12-08T22:30", do: "", visinska: 0, dopust: false, bolniska: true },
-      {od: "2020-12-09T12:30", do: "2020-12-09T18:00", visinska: 2, dopust: false, bolniska: false, dezurni: true },
-      {od: "2020-12-15T12:30", do: "2020-12-15T14:00", visinska: 0, dopust: false, bolniska: false },
-      {od: "2020-12-16T01:30", do: "2020-12-16T03:30", odd: "2020-12-16T07:30", dod: "2020-12-16T18:00", visinska: 0, dopust: false, bolniska: false },
-      {od: "2020-12-20T01:30", do: "2020-12-20T03:30", odd: "2020-12-20T07:30", dod: "2020-12-20T18:00", visinska: 0, dopust: false, bolniska: false },
-      {od: "2020-12-25T01:30", do: "2020-12-25T03:30", odd: "2020-12-25T07:30", dod: "2020-12-25T18:00", visinska: 0, dopust: false, bolniska: false },
+      {od: "2021-01-01T22:30", do: "2021-01-01T23:30", visinska: 0, dopust: false, bolniska: false },
+      {od: "2021-01-02T22:30", do: "2021-01-03T07:30", visinska: 0, dopust: false, bolniska: false },
+      {od: "2021-01-03T21:30", do: "2021-01-04T01:00", odd: "2021-01-04T03:30", dod: "2021-01-04T05:00", visinska: 0, dopust: false, bolniska: false },
+      {od: "2021-01-04T12:30", do: "2021-01-04T18:00", odd: "2021-01-04T22:30", dod: "2021-01-05T03:00", visinska: 0, dopust: false, bolniska: false },
+      {od: "2021-01-05T22:30", do: "2021-01-06T03:00", visinska: 0, dopust: false, bolniska: false },
+      {od: "2021-01-07T22:30", do: "", visinska: 0, dopust: true, bolniska: false },
+      {od: "2021-01-08T22:30", do: "", visinska: 0, dopust: false, bolniska: true },
+      {od: "2021-01-09T12:30", do: "2021-01-10T01:00", odd: "2021-01-10T03:00", dod: "2021-01-10T05:00",visinska: 2, dopust: false, bolniska: false, dezurni: true },
+      {od: "2021-01-10T07:30", do: "2021-01-10T14:00", odd:"2021-01-10T18:00", dod:"2021-01-10T22:30", visinska: 2, dopust: false, bolniska: false, dezurni: true },
+      {od: "2021-01-15T12:30", do: "2021-01-15T14:00", visinska: 0, dopust: false, bolniska: false },
+      {od: "2021-01-16T01:30", do: "2021-01-16T03:30", odd: "2021-01-16T07:30", dod: "2021-01-16T18:00", visinska: 0, dopust: false, bolniska: false },
+      {od: "2021-01-20T01:30", do: "2021-01-20T03:30", odd: "2021-01-20T07:30", dod: "2021-01-20T18:00", visinska: 0, dopust: false, bolniska: false },
+      {od: "2021-01-25T01:30", do: "2021-01-25T03:30", odd: "2021-01-25T07:30", dod: "2021-01-25T18:00", visinska: 0, dopust: false, bolniska: false },
 ];
 
 // DOMOV.SERVICE.API ( getDatumData(), getOsebje() )
