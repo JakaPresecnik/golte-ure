@@ -49,18 +49,21 @@ export class OsebaService {
         break;
       }else if(ura < 22 && ura > 6) {
         minute = 0;
-        continue;
       }else if(minute !== 0){
         mNocna += minute; 
         minute = 0;
+        continue;
       }else if(minuteDo !== 0 && (uraDo >= 22 || uraDo < 6)) {
-        mNocna += minuteDo; 
+        mNocna += 60 - minuteDo; 
         minuteDo = 0;
-      }else {
+      }else if (ura !== uraDo && (ura >= 22 || ura < 6)){
+        console.log(sD, ura, uraDo)
         mNocna += 60;
+      }else {
+        continue;
       }
       if(ura === 24) {
-        ura = 1;
+        ura = 0;
         dvaDni = !dvaDni;
       }
     }
