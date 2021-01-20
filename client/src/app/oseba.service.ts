@@ -31,6 +31,24 @@ export class OsebaService {
     }else if(new Date(en).getDay() === 0) {
       let start = new Date(en.getFullYear(), en.getMonth(), en.getDate());
       return this.calcSkupaj(start, en);
+    }else {
+      return 0;
+    }
+  }
+
+  calcPraznicne(st: Date, en: Date, prazniki) {
+    if(en && prazniki.includes(st.getDate()) && prazniki.includes(en.getDate())){
+      return this.calcSkupaj(st, en);
+    }else if(en && prazniki.includes(st.getDate())) {
+      let nextDay = new Date(st);
+          nextDay = new Date(nextDay.setDate(nextDay.getDate() + 1));
+      let end = new Date(nextDay.getFullYear(), nextDay.getMonth(), nextDay.getDate());
+      return this.calcSkupaj(st, end);
+    }else if(en && prazniki.includes(en.getDate())) {
+      let start = new Date(en.getFullYear(), en.getMonth(), en.getDate());
+      return this.calcSkupaj(start, en);
+    }else {
+      return 0;
     }
   }
 
@@ -57,7 +75,6 @@ export class OsebaService {
         mNocna += 60 - minuteDo; 
         minuteDo = 0;
       }else if (ura !== uraDo && (ura >= 22 || ura < 6)){
-        console.log(sD, ura, uraDo)
         mNocna += 60;
       }else {
         continue;

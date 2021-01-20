@@ -1,13 +1,13 @@
 <th>{{ i + 1 }}</th>
 <td>{{ odTime && doTime ? odTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : 'X' }}</td>
 <td>{{ doTime ? doTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : 'X' }}</td>
-<td>{{ oddTime ? oddTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : '' }}</td>
-<td>{{ dodTime ? dodTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : '' }}</td>
+<td>{{ oddTime ? oddTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : 'X' }}</td>
+<td>{{ dodTime ? dodTime.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' }) : 'X' }}</td>
 <td>{{ skupaj }}</td>
 <td>{{ visinska > 0 ? visinska : '' }}</td>
 <td>{{ doTime && getNocne() }}</td>
-<td>{{ nedeljske }}</td>
-<td>{{ praznicne }} </td>
+<td>{{ nedeljske ? nedeljske : '' }}</td>
+<td>{{ praznicne ? praznicne : '' }} </td>
 <td>{{ dopust ? 'DOP' : null }}</td>
 <td>{{ bolniska ? 'BOL' : null}}</td>
 <td>{{ doTime ? (dodTime ? 2 : 1) : null }}</td>

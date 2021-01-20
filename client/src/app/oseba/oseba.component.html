@@ -1,7 +1,7 @@
 <div *ngIf="loaded">
-<div class="content row pr-3 pl-3 pt-3 d-print-none">
-    <p class="col-md-5 text-uppercase h4">{{ data.mesec }} {{ leto }}</p>
-    <p class="col-md-5 h4">{{ data.ime }}</p>
+<div class="content row pr-3 pl-3 pt-3 d-print-inline">
+    <p class="col-md-5 text-uppercase h4 d-print-inline">{{ data.mesec }} {{ leto }}</p>
+    <p class="col-md-5 h4 d-print-inline">{{ data.ime }}</p>
 </div>
 <!-- <div class="d-print-block">
     <p><span class="h6">{{ data.mesec }} {{ leto }}</span><span class="float-right h6">{{ data.ime }}</span></p>
@@ -35,5 +35,11 @@
             [prazniki]="passPrazniki()"
             [data]="passData(i+1)"></tr>
     </tbody>
+    <tfoot>
+        <tr
+            [prazniki]="passPrazniki()"
+            [data]="data.data"
+            oseba-skupaj></tr>
+    </tfoot>
 </table>
 </div>

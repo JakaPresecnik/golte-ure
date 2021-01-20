@@ -19,6 +19,7 @@ export class OsebaVrsticaComponent implements OnInit {
   nedeljske: number;
   nedeljskeDva: number;
   praznicne: number;
+  praznicneDva: number;
   nocneEna: number = 0;
   nocneDva: number = 0;
   dopust: boolean;
@@ -49,13 +50,15 @@ export class OsebaVrsticaComponent implements OnInit {
       this.nocneDva = this.service.calcNocne(this.oddTime, this.dodTime);
       this.skupaj = this.service.calcSkupaj(this.odTime, this.doTime, this.oddTime, this.dodTime)
     }
-    if(this.odTime && this.prazniki.includes(this.odTime.getDate())){
-      this.praznicne = this.skupaj;
-    }
     this.nedeljske = this.service.calcNedeljske(this.odTime, this.doTime);
     this.nedeljskeDva= this.service.calcNedeljske(this.oddTime, this.dodTime);
     if(this.nedeljskeDva){
       this.nedeljske += this.nedeljskeDva;
+    }
+    this.praznicne = this.service.calcPraznicne(this.odTime, this.doTime, this.prazniki);
+    this.praznicneDva = this.service.calcPraznicne(this.oddTime, this.dodTime, this.prazniki);
+    if (this.praznicneDva) {
+      this.praznicne += this.praznicneDva;
     }
     this.dopust = this.data.dopust;
     this.bolniska = this.data.bolniska;

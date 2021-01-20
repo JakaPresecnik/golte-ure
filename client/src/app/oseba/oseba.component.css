@@ -5,3 +5,7 @@
 .sobota {
     background-color: #eff9d8;
 }
+
+tfoot {
+    font-weight: bold;
+}
