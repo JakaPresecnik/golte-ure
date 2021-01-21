@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { OsebaComponent } from './oseba/oseba.component';
 import { OsebaService } from './oseba.service';
 import { OsebaSkupajComponent } from './oseba-skupaj/oseba-skupaj.component';
+import { PregledComponent } from './pregled/pregled.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { OsebaSkupajComponent } from './oseba-skupaj/oseba-skupaj.component';
     FooterComponent,
     OsebaComponent,
     OsebaVrsticaComponent,
-    OsebaSkupajComponent
+    OsebaSkupajComponent,
+    PregledComponent
   ],
   imports: [
     BrowserModule,

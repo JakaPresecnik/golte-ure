@@ -43,7 +43,6 @@ export class OsebaSkupajComponent implements OnInit {
       this.dezurniSkupaj += dan.dezurni ? 1 : 0;
     })
     this.nocneSkupaj /= 60;
-    console.log(this.data)
   }
 
 }

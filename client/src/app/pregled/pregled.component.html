@@ -1,0 +1,35 @@
+<table *ngIf="loaded" class="table table-striped table-sm">
+    <thead>
+        <tr>
+            <th>Ime in Priimek</th>
+            <th>Skupaj ur</th>
+            <th>Višinske</th>
+            <th>Nočne</th>
+            <th>Nedeljske</th>
+            <th>Praznične</th>
+            <th>Dopust</th>
+            <th>Bolniška</th>
+            <th>Prevoz</th>
+            <th>Malica</th>
+            <th>Dod. malica</th>
+            <th>Dežurni</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of data.osebje">
+            <th>{{ i.ime }}</th>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).ureSkupaj }}</td>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).visinskeSkupaj }}</td>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).nocneSkupaj }}</td>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).nedeljskeSkupaj }}</td>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).praznicneSkupaj }}</td>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).dopustSkupaj }}</td>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).bolniskaSkupaj }}</td>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).prevoziSkupaj }}</td>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).malicaSkupaj }}</td>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).dodatekMalicaSkupaj }}</td>
+            <td>{{ calcSkupaj(data.mesecData[i.emso]).dezurniSkupaj }}</td>
+        </tr>
+    </tbody>
+</table>
+

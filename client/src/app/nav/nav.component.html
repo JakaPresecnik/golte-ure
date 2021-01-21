@@ -16,7 +16,7 @@
         <a class="nav-link" [routerLinkActiveOptions]="{exact:
           true}" routerLinkActive="active" routerLink="/">Domov</a>
         <a class="nav-link" routerLinkActive="active" routerLink="/dodaj">Dodaj</a>
-        <a class="nav-link" routerLinkActive="active" href="#">Preglej</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/pregled', datum.getFullYear(), datum.getMonth()+1]">Preglej</a>
       </div>
     </div>
   </nav>
