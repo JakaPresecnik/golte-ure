@@ -14,7 +14,13 @@ export class DomovComponent implements OnInit {
   
   spremeniDatum(e) {
     e.preventDefault();
-    this.currentDate = new Date(e.target.value)
+    this.currentDate = new Date(e.target.value);
+    this.loaded = false;
+    this.service.getDatumData(this.currentDate).subscribe((data) => {
+      this.datum = data.datum;
+      this.osebje = data.osebje;
+      this.loaded = true;
+    });
   }
 
   constructor(private service: DomovService) { }

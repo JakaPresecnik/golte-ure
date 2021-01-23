@@ -73,8 +73,16 @@
         </div>
         <div class="form-check col-md-1">
             <br />
-            <button type="submit" class="btn btn-success">Shrani</button>
+            <button 
+                (click)="putDan()"
+                *ngIf="emso" 
+                type="submit" 
+                class="btn btn-success">Posodobi</button>
+            <button 
+                (click)="postDan()"
+                *ngIf="!emso" 
+                type="submit" 
+                class="btn btn-success">Shrani</button>
         </div> 
-        <div>{{ form.value | json }}</div>
     </form>
     

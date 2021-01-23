@@ -2,6 +2,7 @@ const express = require('express');
 const Holidays = require('date-holidays');
 
 const app = express(),
+      db = require('./db');
       bodyParser = require('body-parser'),
       port = 3080;
 
@@ -19,9 +20,7 @@ let staff = [
     {"ime": "Jaka Presečnik", "emso": "23678493"},
     {"ime": "Janez A. Novak", "emso": "380350"}
 ];
-let dateData = {
-    "23678493": { datum: "2020-12-15T00:00",  od: "01:32", do: "2020-12-15T03:32", visinska: 0, dopust: false, bolniska: false}
-};
+
 let ime = 'Jaka Presečnik';
 let imeDataMesec = [
       {od: "2021-01-01T07:30", do: "2021-01-01T12:30", odd:"2021-01-01T18:00", dod:"2021-01-01T22:30", visinska: 0, dopust: false, bolniska: false, dezurni: false },
@@ -29,7 +28,7 @@ let imeDataMesec = [
       {od: "2021-01-03T21:30", do: "2021-01-04T01:00", odd: "2021-01-04T03:30", dod: "2021-01-04T05:00", visinska: 0, dopust: false, bolniska: false, dezurni: false },
       {od: "2021-01-04T12:30", do: "2021-01-04T18:00", odd: "2021-01-04T22:30", dod: "2021-01-05T03:00", visinska: 0, dopust: false, bolniska: false, dezurni: false },
       {od: "2021-01-05T22:30", do: "2021-01-06T03:00", visinska: 0, dopust: false, bolniska: false, dezurni: false },
-      {od: "2021-01-07T08:30", do: "2021-01-07T12:30", odd:"2021-01-08T03:30", dod:"2021-01-08T05:00", visinska: 0, dopust: false, bolniska: false.valueOf, dezurni: false },
+      {od: "2021-01-07T08:30", do: "2021-01-07T12:30", odd:"2021-01-08T03:30", dod:"2021-01-08T05:00", visinska: 0, dopust: false, bolniska: false, dezurni: false },
       {od: "2021-01-08T22:30", do: "", visinska: 0, dopust: false, bolniska: true, dezurni: false },
       {od: "2021-01-09T12:30", do: "2021-01-10T01:00", odd: "2021-01-10T03:00", dod: "2021-01-10T05:00",visinska: 2, dopust: false, bolniska: false, dezurni: true },
       {od: "2021-01-10T07:30", do: "2021-01-10T14:00", odd:"2021-01-10T18:00", dod:"2021-01-10T22:30", visinska: 2, dopust: false, bolniska: false, dezurni: true },
@@ -72,9 +71,30 @@ let mesecData = {
 }
 
 // DOMOV.SERVICE.API ( getDatumData(), getOsebje(), getMesecData() )
-app.get('/api/date/staff', (req, res) => {
-    res.json({datum: dateData, osebje: staff});
+app.get('/api/date/staff', async (req, res) => {
+    let dateData =  {};
+    const osebje = await db.query('SELECT * FROM zaposleni');
+    const danData = await db.query('SELECT * FROM delovnicas WHERE datum = $1', [req.query.datum]);
+    osebje.rows.forEach(el => {
+        dateData[el.emso] = danData.rows.filter(id => id.emso === el.emso)[0];
+    });
+    res.json({datum: dateData, osebje: osebje.rows});
 });
+app.post('/api/date/post', async (req, res) => {
+    const {emso, dan, data} = req.body;
+    await db.query(
+        'INSERT INTO delovnicas VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+        [emso, dan, data.od, data.do, data.odd, data.dod, data.visinska, data.dopust, data.bolniska, data.dezurni]);
+        console.log('Shranjeno!');
+});
+app.put('/api/date/update', async (req, res) => {
+    const {emso, dan, data} = req.body;
+
+    await db.query('UPDATE delovnicas SET od = $1, till = $2, odd = $3, dod = $4, visinska = $5, dopust = $6, bolniska = $7, dezurni = $8 WHERE emso = $9 AND datum = $10',
+    [data.od, data.do, data.odd, data.dod, data.visinska, data.dopust, data.bolniska, data.dezurni, emso, dan]);
+    console.log('Posodobljeno!');
+});
+
 app.get('/api/leto/mesec', (req, res) => {
     let prazniki = hd.getHolidays(req.query.leto)
         .filter((praznik) => praznik.type === 'public' && new Date(praznik.date).getMonth() === req.query.mesec-1)

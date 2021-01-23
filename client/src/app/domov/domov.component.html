@@ -2,6 +2,7 @@
     <h2 class="display-4 pt-4">{{ currentDate | date:'d. MMM. yyyy' }}</h2>
     <button class="btn btn-warning mb-4">Drugi datum</button>
     <input (change)="spremeniDatum($event)" type="date" id="calendar">
+    <div *ngIf="!loaded">Nalaga....</div>
     <div *ngIf="loaded">
       <os-danes
         *ngFor="let oseba of osebje"
