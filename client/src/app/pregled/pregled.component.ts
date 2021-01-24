@@ -29,18 +29,25 @@ export class PregledComponent implements OnInit {
     let dezurniSkupaj: number = 0;
     
     emso.forEach(dan => {
-      let skupaj = this.osebaService.calcSkupaj(new Date(dan.od), new Date(dan.do), new Date(dan.odd), new Date(dan.dod));
-      ureSkupaj +=  dan.do ? skupaj : 0;
+      const datum = new Date(dan.datum)
+      const year = datum.getFullYear();
+      const mesec = datum.getMonth() + 1 <= 9 ? '0' + (datum.getMonth()+1) : (datum.getMonth()+1);
+      const date = datum.getDate();
+      const od = new Date(`${year}-${mesec}-${date}T${dan.od}`);
+      const odd = new Date(`${year}-${mesec}-${date}T${dan.odd}`);
+
+      let skupaj = this.osebaService.calcSkupaj(new Date(od), new Date(dan.till), new Date(odd), new Date(dan.dod));
+      ureSkupaj +=  dan.till ? skupaj : 0;
       visinskeSkupaj += dan.visinska;
-      nocneSkupaj += dan.do ? this.osebaService.calcNocne(new Date(dan.od), new Date(dan.do)) : 0;
-      nocneSkupaj += dan.dod ? this.osebaService.calcNocne(new Date(dan.odd), new Date(dan.dod)) : 0;
-      nedeljskeSkupaj += dan.do ? this.osebaService.calcNedeljske(new Date(dan.od), new Date(dan.do)) : 0;
-      nedeljskeSkupaj += dan.dod ? this.osebaService.calcNedeljske(new Date(dan.odd), new Date(dan.dod)) : 0;
-      praznicneSkupaj += dan.do ? this.osebaService.calcPraznicne(new Date(dan.od), new Date(dan.do), this.data.prazniki) : 0;
-      praznicneSkupaj += dan. dod ? this.osebaService.calcPraznicne(new Date(dan.odd), new Date(dan.dod), this.data.prazniki) : 0;
+      nocneSkupaj += dan.till ? this.osebaService.calcNocne(new Date(od), new Date(dan.till)) : 0;
+      nocneSkupaj += dan.dod ? this.osebaService.calcNocne(new Date(odd), new Date(dan.dod)) : 0;
+      nedeljskeSkupaj += dan.till ? this.osebaService.calcNedeljske(new Date(od), new Date(dan.till)) : 0;
+      nedeljskeSkupaj += dan.dod ? this.osebaService.calcNedeljske(new Date(odd), new Date(dan.dod)) : 0;
+      praznicneSkupaj += dan.till ? this.osebaService.calcPraznicne(new Date(od), new Date(dan.till), this.data.prazniki) : 0;
+      praznicneSkupaj += dan. dod ? this.osebaService.calcPraznicne(new Date(odd), new Date(dan.dod), this.data.prazniki) : 0;
       dopustSkupaj += dan.dopust ? 1 : 0;
       bolniskaSkupaj += dan.bolniska ? 1 : 0;
-      prevoziSkupaj += dan.do ? (dan.dod ? 2 : 1) : 0;
+      prevoziSkupaj += dan.till ? (dan.dod ? 2 : 1) : 0;
       malicaSkupaj += skupaj >= 4 ? 1 : 0;
       dodatekMalicaSkupaj += skupaj >= 10 ? (skupaj - 8) * 1 : 0;
       dezurniSkupaj += dan.dezurni ? 1 : 0;
