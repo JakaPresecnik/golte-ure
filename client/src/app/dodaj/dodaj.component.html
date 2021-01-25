@@ -21,8 +21,7 @@
                 placeholder="Emšo">
         </div>
     </div>
-    <button type="submit" class="btn btn-success mb-3">Dodaj</button>
+    <button (click)="shrani()"type="submit" class="btn btn-success mb-3">Dodaj</button>
 </form>
-<p>{{ form.value | json }}</p>
 <p class="text-center">Emšo se rabi za podatkovno bazo, ker mora osnovni ključ biti unikaten.</p>
-<p class="text-center">Dodam lahko še kaj drgega, ki bi se povezovalo na zaposlenega(tečaji, datum zaposlitve... ipd)</p>
+<p class="text-center">Dodam lahko še kaj drugega, ki bi se povezovalo na zaposlenega(tečaji, datum zaposlitve... ipd)</p>

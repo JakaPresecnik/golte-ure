@@ -1,3 +1,4 @@
+import { DodajService } from './dodaj.service';
 import { OsebaVrsticaComponent } from './oseba-vrstica/oseba-vrstica.component';
 import { DomovService } from './domov.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -39,6 +40,7 @@ import { PregledComponent } from './pregled/pregled.component';
   ],
   providers: [
     OsebaService,
+    DodajService,
     DomovService
   ],
   bootstrap: [AppComponent]

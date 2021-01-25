@@ -1,3 +1,4 @@
+import { DodajService } from './../dodaj.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -8,8 +9,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class DodajComponent implements OnInit {
   form: FormGroup;
-  constructor() { }
+  constructor(private service: DodajService) { }
 
+  shrani() {
+    this.service.postOseba(this.form.value);
+  }
+  
   ngOnInit(): void {
     this.form = new FormGroup({
       ime: new FormControl(),

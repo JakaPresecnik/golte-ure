@@ -80,6 +80,21 @@ app.get('/api/leto/mesec', async (req, res) => {
     });
 
     res.json({mesecData, osebje: osebje.rows, prazniki});
+});
+
+// DodajComponent
+app.post('/api/dodaj', async (req, res) => {
+    const osebje = await db.query('SELECT emso FROM zaposleni');
+    const emsoArr = Object.keys(osebje.rows).map((emso) => osebje.rows[emso].emso);
+    console.log(req.body);
+    if(emsoArr.includes(parseInt(req.body.emso))) {
+        console.log('Emso že obstaja!')
+        return res.send({msg: 'Emšo že obstaja!'});
+    }else {
+        await db.query('INSERT INTO zaposleni VALUES($1, $2)', [parseInt(req.body.emso), req.body.ime]);
+        console.log('Shranjeno!');
+        res.send({msg: 'Shranjeno'});
+    }
 })
 
 // OSEBA.SERVICE.API ( getMesecOsebaData() )
