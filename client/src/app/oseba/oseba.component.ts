@@ -30,8 +30,21 @@ export class OsebaComponent implements OnInit {
     }
   }
   passData(i) {
-    if(this.data.data[this.counter] && new Date(this.data.data[this.counter].od).getDate() === i) {
+    if(!this.data.data[this.counter]) {
+      return {}
+    }
+    const datum = new Date(this.data.data[this.counter].datum);
+    const year = datum.getFullYear();
+    const mesec = datum.getMonth() + 1 <= 9 ? '0' + (datum.getMonth()+1) : (datum.getMonth()+1);
+    const date = datum.getDate();
+    const od = new Date(`${year}-${mesec}-${date}T${this.data.data[this.counter].od}`)
+    const odd = this.data.data[this.counter].odd ? new Date(`${year}-${mesec}-${date}T${this.data.data[this.counter].odd}`) : null;
+    
+    if(this.data.data[this.counter] && new Date(datum).getDate() === i) {
       let j = this.counter;
+      this.data.data[this.counter].od = od;
+      this.data.data[this.counter].odd = odd;
+      this.data.data[this.counter].do = this.data.data[this.counter].till;
       this.counter++;
       return this.data.data[j];
     }else {

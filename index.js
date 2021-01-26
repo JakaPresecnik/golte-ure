@@ -17,7 +17,6 @@ hd.init('SI');
 
 // PGDB!!!
 
-let ime = 'Jaka Presečnik';
 let imeDataMesec = [
       {od: "2021-01-01T07:30", do: "2021-01-01T12:30", odd:"2021-01-01T18:00", dod:"2021-01-01T22:30", visinska: 0, dopust: false, bolniska: false, dezurni: false },
       {od: "2021-01-02T22:30", do: "2021-01-03T07:30", visinska: 0, dopust: false, bolniska: false },
@@ -98,7 +97,11 @@ app.post('/api/dodaj', async (req, res) => {
 })
 
 // OSEBA.SERVICE.API ( getMesecOsebaData() )
-app.get('/api/mesec/emso', (req, res) => {
+app.get('/api/mesec/emso', async (req, res) => {
+    const zacetekMeseca = req.query.leto+ '-'+req.query.mesec+'-1';
+    const konecMeseca = req.query.leto + '-' + req.query.mesec +1 + '-1';
+    const osebje = await db.query('SELECT ime FROM zaposleni WHERE emso = $1', [req.query.emso]);
+    const mesecData = await db.query('SELECT * FROM delovnicas WHERE emso = $1 AND datum >= $2 AND datum < $3', [req.query.emso, zacetekMeseca, konecMeseca]);
 
     let prazniki = hd.getHolidays(req.query.leto)
         .filter((praznik) => praznik.type === 'public' && new Date(praznik.date).getMonth() === req.query.mesec-1)
@@ -107,8 +110,8 @@ app.get('/api/mesec/emso', (req, res) => {
         });
 
     res.json({
-        ime, 
-        data: imeDataMesec,
+        ime: osebje.rows[0].ime,
+        data: mesecData.rows,
         prazniki,
         skupajDni: new Date(req.query.leto, req.query.mesec, 0).getDate(),
         mesec: mesecArr[req.query.mesec-1]})

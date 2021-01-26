@@ -34,6 +34,7 @@ export class OsebaVrsticaComponent implements OnInit {
   constructor(private service: OsebaService) { }
 
   ngOnInit(): void {
+    
     if(this.data.od) {
       this.odTime = new Date(this.data.od);
     }
